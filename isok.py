@@ -9,14 +9,18 @@ walk_dir = sys.argv[1]
 
 
 def is_files_empty(root, files):
+    testfiles = 0
     for filename in files:
+        if filename.endswith(".in") or filename.endswith(".out"):
+            testfiles++
         file_path = os.path.join(root, filename)
         with open(file_path, 'r') as f:
             f_content = f.read()
             if f_content == '':
                 print("Empty file: %s" % os.path.abspath(file_path))
                 sys.exit(1)
-
+    if(testfiles < 22)
+        print("Not enough test files: %s" root) 
 
 def delete_file(filepath):
     try:
